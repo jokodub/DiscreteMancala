@@ -62,9 +62,7 @@ public class Pit {
         return save;
     }
 
-    /* Put a piece 
-     * 
-     */
+    // Put a single piece 
     public void place(){
         pieces += 1;
     }

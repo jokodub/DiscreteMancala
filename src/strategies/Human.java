@@ -15,7 +15,12 @@ public class Human implements Strategy{
     public int chooseMove(Board theBoard){
 
         Scanner scan = new Scanner(System.in);
-        return 2;
+    
+        System.out.println("Choose a pit: ");
+        int temp = scan.nextInt();
+
+        scan.close();
+        return temp;
     }
 
 }

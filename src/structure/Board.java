@@ -40,7 +40,7 @@ public class Board {
      * @param numpits as number of pits in a lane
      * @return a Pit[] that contains the starting board setup
      */
-    public static Pit[] setBoardArr(int numpieces, int numpits){
+    public Pit[] setBoardArr(int numpieces, int numpits){
         int totalSpaces = (numpits * 2) + 2; //2 lanes + 2 pots
         Pit[] board = new Pit[totalSpaces];
 
@@ -59,7 +59,7 @@ public class Board {
     /* Alternatively, pass an array of each pit's pieces
      * @param state as the values of each pit, including pots
      */
-    public static Pit[] setBoardArr(int[] state){
+    public Pit[] setBoardArr(int[] state){
         if(state.length < 4 || state.length % 2 != 0){ //Minimum size is 4 and cannot be odd
             System.err.println("Error: Given boardstate array in setBoard is impossible length");
             return null;
@@ -100,6 +100,7 @@ public class Board {
 
     public int getInitialPieces() { return initialPieces; }
     public int getNumPits() { return pits; }
+    public int getPieces(int index) { return boardarr[index].getPieces(); }
 
     //Methods
 
@@ -107,7 +108,7 @@ public class Board {
      * @param player is true for user, false for opponent
      * @return an index into boardarr
      */
-    private int getPotIndex(boolean player){
+    public int getPotIndex(boolean player){
         return player ? pits : (pits * 2) + 1; //Pots are at the end of each player's lane, length of pits.
     }
 
@@ -133,29 +134,6 @@ public class Board {
     public int getOpposingIndex(boolean player, int pos){
         int offset = player ? pos - 1 : pos + pits; //Changes position to an index
         return 2 * pits - offset;
-    }
-
-    /* Returns if the game has been won
-     * The game can essentially be won by taking half+1 instead of the most
-     * @return if the game is over
-     */
-    public boolean gameOver(){
-        int winningPieces = (initialPieces * pits) / 2; //Minimum pieces to have won
-        
-        //Game can be called over early if a player has enough pieces
-        if(boardarr[getPotIndex(true)].getPieces() > winningPieces || 
-        boardarr[getPotIndex(false)].getPieces() > winningPieces)
-            return true;
-        else
-            return false;
-    }
-
-    /* Returns the user that is currently winning
-     * Tie is returned as opponent winning
-     * @return true for p1 winning, false for p2
-     */
-    public boolean whoWinning(){
-        return boardarr[getPotIndex(true)].getPieces() > boardarr[getPotIndex(false)].getPieces();
     }
 
     /* Makes a mancala move by taking all the pieces from a pit and moving them
