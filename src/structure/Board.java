@@ -171,10 +171,34 @@ public class Board {
         int startIndex = index(player, pits);
         int endIndex = index(player, 1);
 
-        for(int i = startIndex, p = 0; i < endIndex; i++)
+        for(int i = startIndex, p = 0; i <= endIndex; i++)
             myPits[p++] = getPieces(i);
 
         return myPits;
+    }
+
+    //Return number of pieces on player's side of the board
+    public int getLanePieces(boolean player){
+
+        int lane = 0;
+        int startIndex = index(player, pits);
+        int endIndex = index(player, 1);
+
+        for(int i = startIndex; i <= endIndex; i++)
+            lane += getPieces(i);
+
+        return lane;
+    }
+
+    //Player has lost, and all remaining pieces on the board go to opponent.
+    public void forfeit(boolean player){
+
+        int oppPot = potIndex(!player);
+        int startIndex = index(!player, pits);
+        int endIndex = index(!player, 1);
+
+        for(int i = startIndex; i <= endIndex; i++)
+            boardarr[oppPot].place(boardarr[i].take());
     }
 
     /* Makes a mancala move by taking all the pieces from a pit and moving them
@@ -185,23 +209,26 @@ public class Board {
      *    6 5 4 3 2 1
      * @param player as which side of the board has the turn
      * @param pos as a number [1-pits] inclusive indicating which pit to move
-     * @return -1 for illegal moves, 0 for success, 1 for bonus move
+     * @return an integer code, comprised of:
+     *      +1 for legal
+     *      +2 for bonus
+     *      +4 for capture
+     *      +8 for forfeit
      */
     public int move(boolean player, int pos){
 
         if (pos < 1 || pos > pits) {
             System.err.println("Error: Attempting to move on a pit that doesn't exist");
-            return -1;
+            return 0;
         }
 
         int startIndex = index(player, pos);
 
         if(getPieces(startIndex) == 0) {
             System.err.println("Error: Attempting to move an empty pit");
-            return -1; //Cannot move an empty pit
+            return 0; 
         }
         
-
         /* Rules of moving:
          * Take pieces out of the pit to move
          * Move along boardarr, skipping opponent's pot
@@ -209,7 +236,7 @@ public class Board {
          * If the final piece is placed in your pot, move again.
          */
         int currIndex = startIndex;
-        int bonus = 0; //By default, no extra moves
+        int status = 0b0001; //By default, +1 = legal
 
         for(int hand = boardarr[index(player, pos)].take(); hand > 0; hand--){
 
@@ -230,7 +257,7 @@ public class Board {
 
                 //If final piece lands in player's pot, another turn
                 if(currIndex == potIndex(player)){ 
-                    bonus = 1; //Player gets a bonus move
+                    status += 0b0010; //+2 = bonus
                 }
 
                 //Capture rules
@@ -240,14 +267,19 @@ public class Board {
                 { 
                     //Place both your and opponent's pits in your pot
                     boardarr[potIndex(player)].place(boardarr[opposingIndex(player, currIndex)].take() + boardarr[currIndex].take());
-                    System.out.println("Capture!");
+                    status += 0b0100; //+4 = capture
                 }
             }
         } //End forloop moving pieces
 
-        /* TO ADD: If no moves remaining, opponent wins all pieces */
+        //If player's lane is now empty, forfeit game
+        if(getLanePieces(player) == 0)
+        {
+            forfeit(player);
+            status += 0b1000; //+8 = forfeit
+        }
 
-        return bonus; //Return 0 or 1 if earned an extra move
+        return status; //Return encoded status of bonus, capture, and forfeit.
     }
 
     /* Turns board into a unique number string
