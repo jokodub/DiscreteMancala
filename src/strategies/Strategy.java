@@ -7,7 +7,8 @@
  * requires.
  */
 
-package DiscreteMancala;
+package strategies;
+import structure.Board;
 
 /* All strategies for players
  * Human = Prompts stdin
@@ -36,5 +37,5 @@ public interface Strategy {
      * @param theBoard as the beginning board state. Can be recursive but must finally return:
      * @return an integer between [1,pits]
      */
-    public int chooseMove(Board theBoard);
+    public int chooseMove(Board theBoard, boolean player);
 }

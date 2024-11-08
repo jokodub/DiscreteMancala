@@ -1,25 +1,35 @@
 /* Discrete Math Mancala Project
  * John Vezzola
  * for Dr. Arup Guha
- * Human strategy
+ * 
+ * Human Strategy
  * Allows a user to play the game, either
  * with another Human or against a Strategy.
  */
 
-package DiscreteMancala;
+package strategies;
+import structure.Board;
 
 import java.util.Scanner;
 
 public class Human implements Strategy{
-    
-    public int chooseMove(Board theBoard){
 
-        Scanner scan = new Scanner(System.in);
+    private Scanner scan;
+
+    public Human(){
+        scan = new Scanner(System.in);
+    }
     
-        System.out.println("Choose a pit: ");
+    public int chooseMove(Board theBoard, boolean player){
+        
+        if(player == true)
+            System.out.print("Player 1, ");
+        else
+            System.out.print("Player 2, ");
+
+        System.out.print("Choose a pit: ");
         int temp = scan.nextInt();
 
-        scan.close();
         return temp;
     }
 
