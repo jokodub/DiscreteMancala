@@ -34,7 +34,7 @@ public class Referee {
             do{
                 if(verbose){
                     System.out.println(b.toString());
-                    printPits(b, true);
+                    printPos(b, true);
                 }
                 
                 //Choose move
@@ -43,14 +43,18 @@ public class Referee {
 
                 //Play the move
                 status = b.move(true, move1); 
-                if(status == -1)
+                if(status == 0)
                 {
                     System.out.println("Player 1 has made an illegal move!");
                     cheatFlag = 1;
                     finished = true;
                     break; //Break out of player's loop
                 }
-                if(status == 1) System.out.println("Move again Player 1!");
+
+                //Print extra text 
+                if(verbose && (status & 2) == 2) System.out.println("Move again Player 1!");
+                if(verbose && (status & 4) == 4) System.out.println("Capture!");
+                if(verbose && (status & 8) == 8) System.out.println("No more available moves!");
 
                 //Determine if game has ended, ignore any bonus moves
                 if(fast)
@@ -66,7 +70,7 @@ public class Referee {
                         break;   
                     }          
 
-            }while(status == 1);
+            }while((status & 2) == 2);
 
             //Break out of while if game ended after Player 1
             if(finished)
@@ -76,7 +80,7 @@ public class Referee {
             //Continue moving if extra moves are earned
             do{
                 if(verbose){
-                    printPits(b, false);
+                    printPos(b, false);
                     System.out.println(b.toString());
                 }
                 
@@ -86,14 +90,18 @@ public class Referee {
 
                 //Play the move
                 status = b.move(false, move2); 
-                if(status == -1)
+                if(status == 0)
                 {
                     System.out.println("Player 2 has made an illegal move!");
                     cheatFlag = 2;
                     finished = true;
                     break; //Break out of player's loop
                 }
-                if(status == 1) System.out.println("Move again Player 2!");
+
+                //Print extra text 
+                if(verbose && (status & 2) == 2) System.out.println("Move again Player 1!");
+                if(verbose && (status & 4) == 4) System.out.println("Capture!");
+                if(verbose && (status & 8) == 8) System.out.println("No more available moves!");
 
                 //Determine if game has ended, ignore any bonus moves
                 if(fast)
@@ -109,7 +117,7 @@ public class Referee {
                         break;    
                     }         
 
-            }while(status == 1);
+            }while((status & 2) == 2);
             
         } //End game while loop
 
@@ -119,6 +127,7 @@ public class Referee {
         }
         else
         {
+            if(verbose) System.out.println(b.toString()); //Print final board
             displayWinner(b);
             return b.getPot(true); //Return Player 1's final score
         }
@@ -131,9 +140,9 @@ public class Referee {
         int winner = whoWinning(b);
 
         if(winner == 1)
-            System.out.println("Player 1 wins!");
+            System.out.println("Player 1 wins! " + b.getPot(true) + "-" + b.getPot(false));
         else if(winner == 2)
-            System.out.println("Player 2 wins!");
+            System.out.println("Player 2 wins! " + b.getPot(false) + "-" + b.getPot(true));
         else
             System.out.println("It's a tie!");
     }
@@ -172,7 +181,7 @@ public class Referee {
             return 2; //Player 2 winning
     }
 
-    public static void printPits(Board b, boolean player){
+    public static void printPos(Board b, boolean player){
         System.out.print("  ");
 
         if(player) //Player 1, pits are left-to-right
