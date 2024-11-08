@@ -1,17 +1,18 @@
 /* Discrete Math Mancala Project
  * John Vezzola
  * for Dr. Arup Guha
- * Board class
- * A board is really an array of Pits, with 
- * methods to move and access them.
+ * 
+ * Board 
+ * Contains an array of Pits, which the game is played on.
  */
 
-package DiscreteMancala;
+package structure;
 
 public class Board {
     
     //Instance variables
     private int initialPieces; //# pieces in each pit to begin
+    private int totalPieces;
     private int pits; //# of spaces in a lane
     private Pit[] boardarr; //arr to hold entire board
 
@@ -20,19 +21,22 @@ public class Board {
     public Board(){
         initialPieces = 4;
         pits = 6;
+        totalPieces = initialPieces * pits * 2;
         boardarr = setBoardArr(initialPieces, pits);
     }
 
     public Board(int numpieces, int numpits){
         initialPieces = numpieces;
         pits = numpits;
+        totalPieces = initialPieces * pits * 2;
         boardarr = setBoardArr(initialPieces, pits);
     }
 
     public Board(int[] state){ //Load a boardstate
         initialPieces = 0;
         pits = (state.length - 2) / 2;
-        boardarr = setBoardArr(state);
+        totalPieces = 0;
+        boardarr = setBoardArr(state); //Also sets totalPieces
     }
 
     /* Creates the Pit[] that will be used for board simulation
@@ -64,6 +68,10 @@ public class Board {
             System.err.println("Error: Given boardstate array in setBoard is impossible length");
             return null;
         }
+
+        //Can't determine initial pieces, so set totalPieces here
+        for(int i = 0; i < state.length; i++)
+            totalPieces += state[i];
             
         int totalSpaces = state.length;
         Pit[] board = new Pit[totalSpaces];
@@ -100,17 +108,13 @@ public class Board {
 
     public int getInitialPieces() { return initialPieces; }
     public int getNumPits() { return pits; }
+    public int getTotalPits() { return pits*2 + 2; }
+    public int getTotalPieces() { return totalPieces; }
     public int getPieces(int index) { return boardarr[index].getPieces(); }
+    public int getPieces(boolean player, int pos) { return boardarr[index(player, pos)].getPieces(); }
+    public int getPot(boolean player) { return boardarr[potIndex(player)].getPieces(); }
 
     //Methods
-
-    /* Returns the index in boardarr that this player's pot is in
-     * @param player is true for user, false for opponent
-     * @return an index into boardarr
-     */
-    public int getPotIndex(boolean player){
-        return player ? pits : (pits * 2) + 1; //Pots are at the end of each player's lane, length of pits.
-    }
 
     /* Returns the index of a given pit in the boardarr
      *   12 11 10 9  8  7
@@ -121,40 +125,82 @@ public class Board {
      * @param pos as the pit in question
      * @return an index into boardarr
      */
-    public int getIndex(boolean player, int pos){
+    public int index(boolean player, int pos){
         int offset = player ? 0 : pits + 1; //Player 1 starts at 0, Player 2 starts after 1's pot
-        return offset + pos - 1;
+        return offset + (pits - pos);
     }
 
-    /* Returns the index of the opponent's pit adjacent to pos, for capture
-     * @param player as who the current player is, opponent is !player
-     * @param pos as the numbering of player's pit
-     * @return an index into opponent's side of boardarr
-     */
-    public int getOpposingIndex(boolean player, int pos){
-        int offset = player ? pos - 1 : pos + pits; //Changes position to an index
-        return 2 * pits - offset;
+    // Inverse of index()
+    public int position(int index){
+        return pits - index % (pits+1); // Mod between [0,pits], return [pits,0] (0 being the pot)
+    }
+
+    // Returns the index in boardarr that this player's pot is in
+    public int potIndex(boolean player){
+        return player ? pits : (pits * 2) + 1; //Pots are at the end of each player's lane, length of pits.
+    }
+
+    // Returns the index of the opponent's pit adjacent to pos, for capture
+    public int opposingIndex(boolean player, int index){
+        return index(!player, pits - position(index) + 1);
+    }
+
+    // Return an array containing all legal moves
+    public int[] getMoves(boolean player){
+
+        int startIndex = index(player, pits);
+        int endIndex = index(player, 1);
+
+        //Find amount of moves available
+        int amount = 0;
+        for(int i = startIndex; i <= endIndex; i++)
+            if(getPieces(i) != 0) amount++;
+        
+        //Write them into array
+        int[] allMoves = new int[amount];
+        for(int i = startIndex, m = 0; i <= endIndex; i++)
+            if(getPieces(i) != 0) allMoves[m++] = position(i);
+        
+        return allMoves;
+    }
+
+    // Return an array of the amount of pieces in each pit
+    public int[] getMySide(boolean player){
+
+        int[] myPits = new int[pits];
+        int startIndex = index(player, pits);
+        int endIndex = index(player, 1);
+
+        for(int i = startIndex, p = 0; i < endIndex; i++)
+            myPits[p++] = getPieces(i);
+
+        return myPits;
     }
 
     /* Makes a mancala move by taking all the pieces from a pit and moving them
      * one at a time across the board.
-     *    6 5 4 3 2 1
+     *    1 2 3 4 5 6
      *  x             
      *                x
-     *    1 2 3 4 5 6
+     *    6 5 4 3 2 1
      * @param player as which side of the board has the turn
      * @param pos as a number [1-pits] inclusive indicating which pit to move
      * @return -1 for illegal moves, 0 for success, 1 for bonus move
      */
     public int move(boolean player, int pos){
-        if (!(pos > 0 && pos <= pits)) {
+
+        if (pos < 1 || pos > pits) {
             System.err.println("Error: Attempting to move on a pit that doesn't exist");
             return -1;
         }
 
-        int startPos = getIndex(player, pos);
+        int startIndex = index(player, pos);
 
-        if(boardarr[startPos].isEmpty()) return -1; //Cannot move an empty pit
+        if(getPieces(startIndex) == 0) {
+            System.err.println("Error: Attempting to move an empty pit");
+            return -1; //Cannot move an empty pit
+        }
+        
 
         /* Rules of moving:
          * Take pieces out of the pit to move
@@ -162,41 +208,44 @@ public class Board {
          * If move finishes on an empty space on your side, capture opposing side's pit
          * If the final piece is placed in your pot, move again.
          */
-        int currPos = startPos;
+        int currIndex = startIndex;
         int bonus = 0; //By default, no extra moves
 
-        for(int hand = boardarr[getIndex(player, pos)].take(); hand > 0; hand--){
+        for(int hand = boardarr[index(player, pos)].take(); hand > 0; hand--){
 
             //Increment postition, loop around edge
-            currPos += 1;
-            if(currPos > pits * 2 + 1) currPos = 0;
+            currIndex += 1;
+            if(currIndex > getTotalPits()-1) currIndex = 0;
 
             //Skip over opponent's pot, undo hand decrement
-            if(currPos == getPotIndex(!player)){
+            if(currIndex == potIndex(!player)){
                 hand++;
                 continue;
             }
 
-            boardarr[currPos].place(); //Place a piece
+            boardarr[currIndex].place(); //Place a piece
 
             //If last piece in hand, check for bonuses
             if(hand == 1){
 
                 //If final piece lands in player's pot, another turn
-                if(currPos == getPotIndex(player)){ 
+                if(currIndex == potIndex(player)){ 
                     bonus = 1; //Player gets a bonus move
                 }
 
                 //Capture rules
-                if(boardarr[currPos].getPieces() == 1 && //Pit was empty
-                currPos >= getIndex(player, 1) && //Pit was on your side 
-                currPos <= getIndex(player, pits) &&
-                !boardarr[getOpposingIndex(player, currPos)].isEmpty()){ //Opponent's pit has something
+                if(getPieces(currIndex) == 1 //Pit was empty
+                   && currIndex >= index(player, pits) && currIndex <= index(player, 1) //Landed on your side
+                   && getPieces(opposingIndex(player, currIndex)) > 0) //Opponent's pit has something
+                { 
                     //Place both your and opponent's pits in your pot
-                    boardarr[getPotIndex(player)].place(boardarr[getOpposingIndex(player, currPos)].take() + boardarr[currPos].take());
+                    boardarr[potIndex(player)].place(boardarr[opposingIndex(player, currIndex)].take() + boardarr[currIndex].take());
+                    System.out.println("Capture!");
                 }
             }
         } //End forloop moving pieces
+
+        /* TO ADD: If no moves remaining, opponent wins all pieces */
 
         return bonus; //Return 0 or 1 if earned an extra move
     }
@@ -238,26 +287,29 @@ public class Board {
 
         //Opponent's side of board
         sb.append("  ");
-        for(int i = pits*2; i > pits+1; i--)
-            sb.append(String.format(" %2d", boardarr[i].getPieces()));
+        for(int i = pits*2; i > pits; i--)
+            sb.append(String.format(" %3d", boardarr[i].getPieces()));
         sb.append("\n");
 
         //Opp pot
-        sb.append(String.format("%2d\n", boardarr[pits*2 + 1].getPieces())); 
+        sb.append(String.format("%3d\n", boardarr[potIndex(false)].getPieces())); 
         
         //User's pot 
         sb.append("  ");
         for(int i = 0; i < pits; i++)
-            sb.append("   ");
-        sb.append(String.format("%2d\n", boardarr[pits].getPieces()));
+            sb.append("    ");
+        sb.append(String.format("%3d\n", boardarr[potIndex(true)].getPieces()));
 
         //User's side of board
-        sb.append("    ");
-        for(int i = pits*2; i > pits+1; i--)
-            sb.append(String.format(" %2d", boardarr[i].getPieces()));
-        sb.append("\n");
+        sb.append("  ");
+        for(int i = 0; i < pits; i++)
+            sb.append(String.format(" %3d", boardarr[i].getPieces()));
 
         return sb.toString();
+    }
+
+    public Board copy(){
+        return new Board(getBoardArr());
     }
 
 }
