@@ -1,54 +1,148 @@
 /* Discrete Math Mancala Project
  * John Vezzola
  * for Dr. Arup Guha
- * MancalaPlayer class
- * This class creates two players and referees
- * the game between them.
+ * 
+ * Referee
+ * Simulates one game between two different Strategies.
  */
 
-package DiscreteMancala;
+package structure;
+import strategies.*;
 
 public class Referee {
     
-    public static void play(Strategy p1, Strategy p2, boolean verbose) {
+    /* Play an entire game of mancala.
+     * @param p1,p2 as the Strategies for Player 1 and 2.
+     * @param verbose to print the game out at each step for observing
+     * @param fast as whether to call games early or play out in full
+     * @return Player 1's final score, or -1 if an illegal move occurred.
+     */
+    public static int play(Strategy p1, Strategy p2, boolean verbose, boolean fast) {
 
-        Board b = new Board();
+        Board b = new Board(); //Board(initial pieces, pits per player)
 
         //Game loop
-        while(true){
+        int move1, move2;
+        int status = 0; //Stores return of move(), -1 for illegal, 0 for normal, 1 for bonus
+        int cheatFlag = 0; //Flag for illegal moves
+        boolean finished = false; //Flag for game ending
+
+        while(!finished)
+        {
             //Perform player 1's move
-            int move1 = p1.chooseMove(b);
-            if(verbose) System.out.println("Player 1 chooses position " + move1);
-            b.move(true, move1); 
-            if(verbose) b.printBoard();
-            if(b.gameOver()) 
-                break;
+            //Continue moving if extra moves are earned
+            do{
+                if(verbose){
+                    System.out.println(b.toString());
+                    printPits(b, true);
+                }
+                
+                //Choose move
+                move1 = p1.chooseMove(b, true);
+                if(verbose) System.out.println("Player 1 chooses position " + move1);
+
+                //Play the move
+                status = b.move(true, move1); 
+                if(status == -1)
+                {
+                    System.out.println("Player 1 has made an illegal move!");
+                    cheatFlag = 1;
+                    finished = true;
+                    break; //Break out of player's loop
+                }
+                if(status == 1) System.out.println("Move again Player 1!");
+
+                //Determine if game has ended, ignore any bonus moves
+                if(fast)
+                    if(gameOverHalf(b))
+                    {
+                        finished = true;
+                        break;
+                    }
+                else
+                    if(gameOver(b))
+                    {
+                        finished = true;
+                        break;   
+                    }          
+
+            }while(status == 1);
+
+            //Break out of while if game ended after Player 1
+            if(finished)
+                break; 
 
             //Perform player 2's move
-            int move2 = p2.chooseMove(b);
-            if(verbose) System.out.println("Player 2 chooses position " + move2);
-            b.move(false, move2);
-            if(verbose) b.printBoard();
-            if(b.gameOver()) 
-                break;
-        }
+            //Continue moving if extra moves are earned
+            do{
+                if(verbose){
+                    printPits(b, false);
+                    System.out.println(b.toString());
+                }
+                
+                //Choose move
+                move2 = p2.chooseMove(b, false);
+                if(verbose) System.out.println("Player 2 chooses position " + move2);
 
-        displayWinner(b);
-        
+                //Play the move
+                status = b.move(false, move2); 
+                if(status == -1)
+                {
+                    System.out.println("Player 2 has made an illegal move!");
+                    cheatFlag = 2;
+                    finished = true;
+                    break; //Break out of player's loop
+                }
+                if(status == 1) System.out.println("Move again Player 2!");
+
+                //Determine if game has ended, ignore any bonus moves
+                if(fast)
+                    if(gameOverHalf(b))
+                    {
+                        finished = true;
+                        break;
+                    }
+                else
+                    if(gameOver(b))
+                    {
+                        finished = true;
+                        break;    
+                    }         
+
+            }while(status == 1);
+            
+        } //End game while loop
+
+        if(cheatFlag != 0)
+        {
+            return cheatFlag == 1 ? 0 : b.getTotalPieces(); //Return 0 for P1 forfeit, or everything for P2 forfeit 
+        }
+        else
+        {
+            displayWinner(b);
+            return b.getPot(true); //Return Player 1's final score
+        }
+            
     }
 
+    //Display the winner after the game has ended
     public static void displayWinner(Board b){
-        if(b.whoWinning())
+
+        int winner = whoWinning(b);
+
+        if(winner == 1)
             System.out.println("Player 1 wins!");
-        else
+        else if(winner == 2)
             System.out.println("Player 2 wins!");
+        else
+            System.out.println("It's a tie!");
     }
 
     /* Returns if the game is over, all pieces have been collected.
      * @return true if game over, false if pieces remaining
      */
     public static boolean gameOver(Board b){
-
+        return b.getPot(true) + b.getPot(false) == b.getTotalPieces();
     }
 
     /* Returns if the game has already been won, if a player has over
@@ -56,27 +150,39 @@ public class Referee {
      * @return true if a player has half the pieces
      */
     public static boolean gameOverHalf(Board b){
-
-    }
-
-    
-    public boolean gameOver(){
-        int winningPieces = (initialPieces * pits) / 2; //Minimum pieces to have won
-        
-        //Game can be called over early if a player has enough pieces
-        if(boardarr[getPotIndex(true)].getPieces() > winningPieces || 
-        boardarr[getPotIndex(false)].getPieces() > winningPieces)
+        int winningAmount = b.getTotalPieces() / 2;
+        if(b.getPot(true) > winningAmount || b.getPot(false) > winningAmount)
             return true;
-        else
+        else 
             return false;
     }
 
     /* Returns the user that is currently winning
-     * Tie is returned as opponent winning
-     * @return true for p1 winning, false for p2
+     * @return 1 for p1, 2 for p2, 0 for tie
      */
     public static int whoWinning(Board b){
-        
-        return b.getPieces(b.getPotIndex(true)) > b.getPieces(b.getPotIndex(false));
+        int p1 = b.getPot(true);
+        int p2 = b.getPot(false);
+
+        if(p1 == p2)
+            return 0; //Tie
+        else if(p1 > p2)
+            return 1; //Player 1 winning
+        else
+            return 2; //Player 2 winning
+    }
+
+    public static void printPits(Board b, boolean player){
+        System.out.print("  ");
+
+        if(player) //Player 1, pits are left-to-right
+            for(int i = b.getNumPits(); i > 0; i--)
+                System.out.print(" ("+i+")");
+
+        else //Player 2, pits are right-to-left
+            for(int i = 1; i <= b.getNumPits(); i++)
+                System.out.print(" ("+i+")");
+
+        System.out.println();
     }
 }

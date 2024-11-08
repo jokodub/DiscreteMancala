@@ -1,15 +1,15 @@
 /* Discrete Math Mancala Project
  * John Vezzola
  * for Dr. Arup Guha
- * Pit class
- * A pit is what mancala boards are made of. 
- * It holds some number of pieces, which can be
- * sowed across the board. Pots are the large pits
- * at the edges of the board that cannot be sowed
- * and act as the player's score. 
+ * 
+ * Pit
+ * A pit is what mancala boards are made of, containing pieces 
+ * that can be sowed around the board.
+ * Pots are the large pits at the edges of the board that cannot 
+ * be moved and act as the player's score. 
  */
 
-package DiscreteMancala;
+package structure;
 
 public class Pit {
 
