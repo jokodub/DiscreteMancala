@@ -1,10 +1,10 @@
 /* Discrete Math Mancala Project
  * John Vezzola
  * for Dr. Arup Guha
- * Strategy interface
- * Requires all players to implement a move 
- * method, which is all that MancalaPlayer
- * requires.
+ * 
+ * Strategy Interface
+ * Every Strategy must have a method that chooses
+ * which pit to move.
  */
 
 package strategies;
@@ -38,4 +38,10 @@ public interface Strategy {
      * @return an integer between [1,pits]
      */
     public int chooseMove(Board theBoard, boolean player);
+
+    /* Return the name of the Strategy, so downcasting to Strategy type
+     * does not lose the original
+     * @return the name of this Strategy as a String
+     */
+    public String toString();
 }

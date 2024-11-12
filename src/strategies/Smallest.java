@@ -50,5 +50,8 @@ public class Smallest implements Strategy {
         return desiredMoves[rand.nextInt(desiredMoves.length)]; //Return a random choice of the minimums
     }
 
+    public String toString(){
+        return "Smallest";
+    }
 }
  

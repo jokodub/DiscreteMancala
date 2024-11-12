@@ -15,4 +15,8 @@ public class CloseFar implements Strategy {
         int[] moves = theBoard.getMoves(player);
         return moves[moves.length-1]; //Positions are sorted descending, so last element is closest.
     }
+
+    public String toString(){
+        return "CloseFar";
+    }
 }

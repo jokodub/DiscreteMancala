@@ -33,4 +33,8 @@ public class Human implements Strategy{
         return temp;
     }
 
+    public String toString(){
+        return "Human";
+    }
+
 }

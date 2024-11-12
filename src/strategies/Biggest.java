@@ -50,5 +50,9 @@ public class Biggest implements Strategy {
         return desiredMoves[rand.nextInt(desiredMoves.length)]; //Return a random choice of the maximums
     }
 
+    public String toString(){
+        return "Biggest";
+    }
+
 }
  

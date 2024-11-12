@@ -1,0 +1,125 @@
+Matchup 1, Randomized vs Randomized:
+  Average: Randomized 23-25 Randomized
+  Randomized's Best Game: 37-11
+  Randomized's Worst Game: 7-41
+
+Matchup 2, Randomized vs CloseFar:
+  Average: Randomized 17-31 CloseFar
+  Randomized's Best Game: 35-13
+  Randomized's Worst Game: 5-43
+
+Matchup 3, Randomized vs FarClose:
+  Average: Randomized 22-26 FarClose
+  Randomized's Best Game: 45-3
+  Randomized's Worst Game: 6-42
+
+Matchup 4, Randomized vs Biggest:
+  Average: Randomized 22-26 Biggest
+  Randomized's Best Game: 35-13
+  Randomized's Worst Game: 12-36
+
+Matchup 5, Randomized vs Smallest:
+  Average: Randomized 25-23 Smallest
+  Randomized's Best Game: 43-5
+  Randomized's Worst Game: 4-44
+
+Matchup 6, CloseFar vs Randomized:
+  Average: CloseFar 31-17 Randomized
+  CloseFar's Best Game: 42-6
+  CloseFar's Worst Game: 17-31
+
+Matchup 7, CloseFar vs CloseFar:
+  Average: CloseFar 24-24 CloseFar
+  CloseFar's Best Game: 24-24
+  CloseFar's Worst Game: 24-24
+
+Matchup 8, CloseFar vs FarClose:
+  Average: CloseFar 38-10 FarClose
+  CloseFar's Best Game: 38-10
+  CloseFar's Worst Game: 38-10
+
+Matchup 9, CloseFar vs Biggest:
+  Average: CloseFar 27-21 Biggest
+  CloseFar's Best Game: 43-5
+  CloseFar's Worst Game: 15-33
+
+Matchup 10, CloseFar vs Smallest:
+  Average: CloseFar 32-16 Smallest
+  CloseFar's Best Game: 41-7
+  CloseFar's Worst Game: 21-27
+
+Matchup 11, FarClose vs Randomized:
+  Average: FarClose 22-26 Randomized
+  FarClose's Best Game: 40-8
+  FarClose's Worst Game: 4-44
+
+Matchup 12, FarClose vs CloseFar:
+  Average: FarClose 10-38 CloseFar
+  FarClose's Best Game: 10-38
+  FarClose's Worst Game: 10-38
+
+Matchup 13, FarClose vs FarClose:
+  Average: FarClose 12-36 FarClose
+  FarClose's Best Game: 12-36
+  FarClose's Worst Game: 12-36
+
+Matchup 14, FarClose vs Biggest:
+  Average: FarClose 23-25 Biggest
+  FarClose's Best Game: 39-9
+  FarClose's Worst Game: 7-41
+
+Matchup 15, FarClose vs Smallest:
+  Average: FarClose 12-36 Smallest
+  FarClose's Best Game: 29-19
+  FarClose's Worst Game: 4-44
+
+Matchup 16, Biggest vs Randomized:
+  Average: Biggest 25-23 Randomized
+  Biggest's Best Game: 39-9
+  Biggest's Worst Game: 12-36
+
+Matchup 17, Biggest vs CloseFar:
+  Average: Biggest 20-28 CloseFar
+  Biggest's Best Game: 33-15
+  Biggest's Worst Game: 4-44
+
+Matchup 18, Biggest vs FarClose:
+  Average: Biggest 26-22 FarClose
+  Biggest's Best Game: 41-7
+  Biggest's Worst Game: 12-36
+
+Matchup 19, Biggest vs Biggest:
+  Average: Biggest 24-24 Biggest
+  Biggest's Best Game: 32-16
+  Biggest's Worst Game: 14-34
+
+Matchup 20, Biggest vs Smallest:
+  Average: Biggest 26-22 Smallest
+  Biggest's Best Game: 42-6
+  Biggest's Worst Game: 9-39
+
+Matchup 21, Smallest vs Randomized:
+  Average: Smallest 22-26 Randomized
+  Smallest's Best Game: 42-6
+  Smallest's Worst Game: 4-44
+
+Matchup 22, Smallest vs CloseFar:
+  Average: Smallest 15-33 CloseFar
+  Smallest's Best Game: 34-14
+  Smallest's Worst Game: 5-43
+
+Matchup 23, Smallest vs FarClose:
+  Average: Smallest 33-15 FarClose
+  Smallest's Best Game: 44-4
+  Smallest's Worst Game: 10-38
+
+Matchup 24, Smallest vs Biggest:
+  Average: Smallest 22-26 Biggest
+  Smallest's Best Game: 42-6
+  Smallest's Worst Game: 5-43
+
+Matchup 25, Smallest vs Smallest:
+  Average: Smallest 23-25 Smallest
+  Smallest's Best Game: 43-5
+  Smallest's Worst Game: 6-42
+

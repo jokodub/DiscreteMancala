@@ -26,4 +26,8 @@ public class Randomized implements Strategy{
         return moves[rand.nextInt(moves.length)]; //Return a random option from possible moves
     }
 
+    public String toString(){
+        return "Randomized";
+    }
+
 }

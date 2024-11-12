@@ -16,4 +16,8 @@ public class FarClose implements Strategy {
         return moves[0]; //Positions are sorted descending, so first element is farthest.
     }
 
+    public String toString(){
+        return "FarClose";
+    }
+
 }
