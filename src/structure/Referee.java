@@ -12,14 +12,13 @@ import strategies.*;
 public class Referee {
     
     /* Play an entire game of mancala.
+     * @param b as the Board to begin play on
      * @param p1,p2 as the Strategies for Player 1 and 2.
      * @param verbose to print the game out at each step for observing
      * @param fast as whether to call games early or play out in full
      * @return Player 1's final score, or -1 if an illegal move occurred.
      */
-    public static int play(Strategy p1, Strategy p2, boolean verbose, boolean fast) {
-
-        Board b = new Board(); //Board(initial pieces, pits per player)
+    public static int play(Board b, Strategy p1, Strategy p2, boolean verbose, boolean fast) {
 
         //Game loop
         int move1, move2;
@@ -70,10 +69,10 @@ public class Referee {
                         break;   
                     }          
 
-            }while((status & 2) == 2);
+            }while((status & 2) == 2 && (status & 8) != 8);
 
-            //Break out of while if game ended after Player 1
-            if(finished)
+            //Break out of while if game forfeited/ended after Player 1
+            if(finished || (status & 8) == 8)
                 break; 
 
             //Perform player 2's move
@@ -99,7 +98,7 @@ public class Referee {
                 }
 
                 //Print extra text 
-                if(verbose && (status & 2) == 2) System.out.println("Move again Player 1!");
+                if(verbose && (status & 2) == 2) System.out.println("Move again Player 2!");
                 if(verbose && (status & 4) == 4) System.out.println("Capture!");
                 if(verbose && (status & 8) == 8) System.out.println("No more available moves!");
 
@@ -117,7 +116,11 @@ public class Referee {
                         break;    
                     }         
 
-            }while((status & 2) == 2);
+            }while((status & 2) == 2 && (status & 8) != 8);
+
+            //Break out of while if game forfeited after Player 2
+            if(finished || (status & 8) == 8)
+                break; 
             
         } //End game while loop
 
@@ -128,21 +131,21 @@ public class Referee {
         else
         {
             if(verbose) System.out.println(b.toString()); //Print final board
-            displayWinner(b);
+            displayWinner(b, p1, p2);
             return b.getPot(true); //Return Player 1's final score
         }
             
     }
 
     //Display the winner after the game has ended
-    public static void displayWinner(Board b){
+    public static void displayWinner(Board b, Strategy p1, Strategy p2){
 
         int winner = whoWinning(b);
 
         if(winner == 1)
-            System.out.println("Player 1 wins! " + b.getPot(true) + "-" + b.getPot(false));
+            System.out.println("Player 1 ("+p1.toString()+") wins! " + b.getPot(true) + "-" + b.getPot(false));
         else if(winner == 2)
-            System.out.println("Player 2 wins! " + b.getPot(false) + "-" + b.getPot(true));
+            System.out.println("Player 2 ("+p2.toString()+") wins! " + b.getPot(false) + "-" + b.getPot(true));
         else
             System.out.println("It's a tie!");
     }
