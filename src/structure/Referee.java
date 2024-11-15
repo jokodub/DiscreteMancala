@@ -37,7 +37,7 @@ public class Referee {
                 }
                 
                 //Choose move
-                move1 = p1.chooseMove(b, true);
+                move1 = p1.chooseMove(b.copy(), true);
                 if(verbose) System.out.println("Player 1 chooses position " + move1);
 
                 //Play the move
@@ -84,7 +84,7 @@ public class Referee {
                 }
                 
                 //Choose move
-                move2 = p2.chooseMove(b, false);
+                move2 = p2.chooseMove(b.copy(), false);
                 if(verbose) System.out.println("Player 2 chooses position " + move2);
 
                 //Play the move

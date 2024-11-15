@@ -276,14 +276,14 @@ public class Board {
         if(getLanePieces(player) == 0)
         {
             forfeit(player);
-            status += 0b1000; //+8 = forfeit
+            status |= 0b1000; //+8 = forfeit
         }
 
         //If opponent has no more moves (by capture), flag game is over.
         if(getLanePieces(!player) == 0)
         {
             forfeit(!player);
-            status |= 0b1000;
+            status |= 0b1000; //or equals to not overflow if both lanes are empty
         }
 
         return status; //Return encoded status of bonus, capture, and forfeit.

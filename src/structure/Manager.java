@@ -8,6 +8,8 @@
 
 package structure;
 import strategies.*;
+import strategies.simple.*;
+import strategies.stronger.*;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -17,8 +19,8 @@ public class Manager {
     
     public static void main(String[] args) {
 
-        //Referee.play(new Board(), new Randomized(), new Randomized(), true, false); //Play single game
-        simulate(100, 4, 6); //Sim every Strategy
+        //Referee.play(new Board(), new Biggest(), new Biggest(), true, false); //Play single game
+        simulate(1000, 4, 6); //Sim every Strategy
 
     }
 
@@ -36,7 +38,10 @@ public class Manager {
                                     new CloseFar(), 
                                     new FarClose(), 
                                     new Biggest(),
-                                    new Smallest()};
+                                    new Smallest(),
+                                    new Bonus(),
+                                    new Capture()
+                                    };
 
         Board b = new Board(pieces, pits);
         int totalPieces = b.getTotalPieces();
@@ -63,7 +68,7 @@ public class Manager {
                         if(P1score > bestP1) bestP1 = P1score;
                         if(P1score < worstP1) worstP1 = P1score;
                     }
-                    int P1avg = runningP1Total /= 100; //Average out over 100
+                    int P1avg = runningP1Total /= trials; //Average out over all trials
                     int P2avg = totalPieces - P1avg;
 
                     //Save summary
