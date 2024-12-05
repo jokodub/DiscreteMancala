@@ -1,125 +1,405 @@
 Matchup 1, Randomized vs Randomized:
-  Average: Randomized 23-25 Randomized
-  Randomized's Best Game: 37-11
-  Randomized's Worst Game: 7-41
-
-Matchup 2, Randomized vs CloseFar:
-  Average: Randomized 17-31 CloseFar
-  Randomized's Best Game: 35-13
+  Average: Randomized 24-24 Randomized
+  Randomized's Best Game: 44-4
   Randomized's Worst Game: 5-43
 
-Matchup 3, Randomized vs FarClose:
-  Average: Randomized 22-26 FarClose
-  Randomized's Best Game: 45-3
-  Randomized's Worst Game: 6-42
-
-Matchup 4, Randomized vs Biggest:
-  Average: Randomized 22-26 Biggest
-  Randomized's Best Game: 35-13
-  Randomized's Worst Game: 12-36
-
-Matchup 5, Randomized vs Smallest:
-  Average: Randomized 25-23 Smallest
-  Randomized's Best Game: 43-5
+Matchup 2, Randomized vs CloseFar:
+  Average: Randomized 18-30 CloseFar
+  Randomized's Best Game: 37-11
   Randomized's Worst Game: 4-44
 
-Matchup 6, CloseFar vs Randomized:
-  Average: CloseFar 31-17 Randomized
-  CloseFar's Best Game: 42-6
-  CloseFar's Worst Game: 17-31
+Matchup 3, Randomized vs FarClose:
+  Average: Randomized 25-23 FarClose
+  Randomized's Best Game: 46-2
+  Randomized's Worst Game: 5-43
 
-Matchup 7, CloseFar vs CloseFar:
+Matchup 4, Randomized vs Biggest:
+  Average: Randomized 23-25 Biggest
+  Randomized's Best Game: 43-5
+  Randomized's Worst Game: 5-43
+
+Matchup 5, Randomized vs Smallest:
+  Average: Randomized 24-24 Smallest
+  Randomized's Best Game: 46-2
+  Randomized's Worst Game: 3-45
+
+Matchup 6, Randomized vs Bonus:
+  Average: Randomized 16-32 Bonus
+  Randomized's Best Game: 44-4
+  Randomized's Worst Game: 4-44
+
+Matchup 7, Randomized vs Capture:
+  Average: Randomized 20-28 Capture
+  Randomized's Best Game: 44-4
+  Randomized's Worst Game: 3-45
+
+Matchup 8, Randomized vs Spread:
+  Average: Randomized 22-26 Spread
+  Randomized's Best Game: 41-7
+  Randomized's Worst Game: 5-43
+
+Matchup 9, Randomized vs Hoard:
+  Average: Randomized 21-27 Hoard
+  Randomized's Best Game: 45-3
+  Randomized's Worst Game: 3-45
+
+Matchup 10, CloseFar vs Randomized:
+  Average: CloseFar 31-17 Randomized
+  CloseFar's Best Game: 43-5
+  CloseFar's Worst Game: 11-37
+
+Matchup 11, CloseFar vs CloseFar:
   Average: CloseFar 24-24 CloseFar
   CloseFar's Best Game: 24-24
   CloseFar's Worst Game: 24-24
 
-Matchup 8, CloseFar vs FarClose:
+Matchup 12, CloseFar vs FarClose:
   Average: CloseFar 38-10 FarClose
   CloseFar's Best Game: 38-10
   CloseFar's Worst Game: 38-10
 
-Matchup 9, CloseFar vs Biggest:
+Matchup 13, CloseFar vs Biggest:
   Average: CloseFar 27-21 Biggest
   CloseFar's Best Game: 43-5
-  CloseFar's Worst Game: 15-33
+  CloseFar's Worst Game: 14-34
 
-Matchup 10, CloseFar vs Smallest:
-  Average: CloseFar 32-16 Smallest
+Matchup 14, CloseFar vs Smallest:
+  Average: CloseFar 33-15 Smallest
   CloseFar's Best Game: 41-7
-  CloseFar's Worst Game: 21-27
+  CloseFar's Worst Game: 18-30
 
-Matchup 11, FarClose vs Randomized:
-  Average: FarClose 22-26 Randomized
-  FarClose's Best Game: 40-8
-  FarClose's Worst Game: 4-44
+Matchup 15, CloseFar vs Bonus:
+  Average: CloseFar 24-24 Bonus
+  CloseFar's Best Game: 41-7
+  CloseFar's Worst Game: 9-39
 
-Matchup 12, FarClose vs CloseFar:
+Matchup 16, CloseFar vs Capture:
+  Average: CloseFar 29-19 Capture
+  CloseFar's Best Game: 44-4
+  CloseFar's Worst Game: 10-38
+
+Matchup 17, CloseFar vs Spread:
+  Average: CloseFar 31-17 Spread
+  CloseFar's Best Game: 40-8
+  CloseFar's Worst Game: 25-23
+
+Matchup 18, CloseFar vs Hoard:
+  Average: CloseFar 34-14 Hoard
+  CloseFar's Best Game: 38-10
+  CloseFar's Worst Game: 30-18
+
+Matchup 19, FarClose vs Randomized:
+  Average: FarClose 23-25 Randomized
+  FarClose's Best Game: 43-5
+  FarClose's Worst Game: 2-46
+
+Matchup 20, FarClose vs CloseFar:
   Average: FarClose 10-38 CloseFar
   FarClose's Best Game: 10-38
   FarClose's Worst Game: 10-38
 
-Matchup 13, FarClose vs FarClose:
+Matchup 21, FarClose vs FarClose:
   Average: FarClose 12-36 FarClose
   FarClose's Best Game: 12-36
   FarClose's Worst Game: 12-36
 
-Matchup 14, FarClose vs Biggest:
-  Average: FarClose 23-25 Biggest
-  FarClose's Best Game: 39-9
-  FarClose's Worst Game: 7-41
-
-Matchup 15, FarClose vs Smallest:
-  Average: FarClose 12-36 Smallest
-  FarClose's Best Game: 29-19
+Matchup 22, FarClose vs Biggest:
+  Average: FarClose 22-26 Biggest
+  FarClose's Best Game: 42-6
   FarClose's Worst Game: 4-44
 
-Matchup 16, Biggest vs Randomized:
-  Average: Biggest 25-23 Randomized
-  Biggest's Best Game: 39-9
-  Biggest's Worst Game: 12-36
+Matchup 23, FarClose vs Smallest:
+  Average: FarClose 12-36 Smallest
+  FarClose's Best Game: 24-24
+  FarClose's Worst Game: 4-44
 
-Matchup 17, Biggest vs CloseFar:
+Matchup 24, FarClose vs Bonus:
+  Average: FarClose 16-32 Bonus
+  FarClose's Best Game: 42-6
+  FarClose's Worst Game: 2-46
+
+Matchup 25, FarClose vs Capture:
+  Average: FarClose 19-29 Capture
+  FarClose's Best Game: 44-4
+  FarClose's Worst Game: 3-45
+
+Matchup 26, FarClose vs Spread:
+  Average: FarClose 18-30 Spread
+  FarClose's Best Game: 21-27
+  FarClose's Worst Game: 16-32
+
+Matchup 27, FarClose vs Hoard:
+  Average: FarClose 22-26 Hoard
+  FarClose's Best Game: 34-14
+  FarClose's Worst Game: 20-28
+
+Matchup 28, Biggest vs Randomized:
+  Average: Biggest 25-23 Randomized
+  Biggest's Best Game: 44-4
+  Biggest's Worst Game: 6-42
+
+Matchup 29, Biggest vs CloseFar:
   Average: Biggest 20-28 CloseFar
-  Biggest's Best Game: 33-15
+  Biggest's Best Game: 38-10
   Biggest's Worst Game: 4-44
 
-Matchup 18, Biggest vs FarClose:
-  Average: Biggest 26-22 FarClose
-  Biggest's Best Game: 41-7
+Matchup 30, Biggest vs FarClose:
+  Average: Biggest 25-23 FarClose
+  Biggest's Best Game: 44-4
+  Biggest's Worst Game: 7-41
+
+Matchup 31, Biggest vs Biggest:
+  Average: Biggest 24-24 Biggest
+  Biggest's Best Game: 37-11
   Biggest's Worst Game: 12-36
 
-Matchup 19, Biggest vs Biggest:
-  Average: Biggest 24-24 Biggest
-  Biggest's Best Game: 32-16
-  Biggest's Worst Game: 14-34
-
-Matchup 20, Biggest vs Smallest:
+Matchup 32, Biggest vs Smallest:
   Average: Biggest 26-22 Smallest
+  Biggest's Best Game: 45-3
+  Biggest's Worst Game: 5-43
+
+Matchup 33, Biggest vs Bonus:
+  Average: Biggest 16-32 Bonus
+  Biggest's Best Game: 39-9
+  Biggest's Worst Game: 5-43
+
+Matchup 34, Biggest vs Capture:
+  Average: Biggest 21-27 Capture
   Biggest's Best Game: 42-6
-  Biggest's Worst Game: 9-39
+  Biggest's Worst Game: 6-42
 
-Matchup 21, Smallest vs Randomized:
-  Average: Smallest 22-26 Randomized
-  Smallest's Best Game: 42-6
-  Smallest's Worst Game: 4-44
+Matchup 35, Biggest vs Spread:
+  Average: Biggest 24-24 Spread
+  Biggest's Best Game: 37-11
+  Biggest's Worst Game: 15-33
 
-Matchup 22, Smallest vs CloseFar:
-  Average: Smallest 15-33 CloseFar
+Matchup 36, Biggest vs Hoard:
+  Average: Biggest 24-24 Hoard
+  Biggest's Best Game: 45-3
+  Biggest's Worst Game: 7-41
+
+Matchup 37, Smallest vs Randomized:
+  Average: Smallest 24-24 Randomized
+  Smallest's Best Game: 45-3
+  Smallest's Worst Game: 3-45
+
+Matchup 38, Smallest vs CloseFar:
+  Average: Smallest 14-34 CloseFar
   Smallest's Best Game: 34-14
   Smallest's Worst Game: 5-43
 
-Matchup 23, Smallest vs FarClose:
+Matchup 39, Smallest vs FarClose:
   Average: Smallest 33-15 FarClose
   Smallest's Best Game: 44-4
-  Smallest's Worst Game: 10-38
+  Smallest's Worst Game: 9-39
 
-Matchup 24, Smallest vs Biggest:
-  Average: Smallest 22-26 Biggest
-  Smallest's Best Game: 42-6
+Matchup 40, Smallest vs Biggest:
+  Average: Smallest 21-27 Biggest
+  Smallest's Best Game: 44-4
+  Smallest's Worst Game: 2-46
+
+Matchup 41, Smallest vs Smallest:
+  Average: Smallest 24-24 Smallest
+  Smallest's Best Game: 46-2
+  Smallest's Worst Game: 3-45
+
+Matchup 42, Smallest vs Bonus:
+  Average: Smallest 17-31 Bonus
+  Smallest's Best Game: 44-4
+  Smallest's Worst Game: 2-46
+
+Matchup 43, Smallest vs Capture:
+  Average: Smallest 21-27 Capture
+  Smallest's Best Game: 44-4
+  Smallest's Worst Game: 2-46
+
+Matchup 44, Smallest vs Spread:
+  Average: Smallest 18-30 Spread
+  Smallest's Best Game: 40-8
+  Smallest's Worst Game: 4-44
+
+Matchup 45, Smallest vs Hoard:
+  Average: Smallest 25-23 Hoard
+  Smallest's Best Game: 44-4
   Smallest's Worst Game: 5-43
 
-Matchup 25, Smallest vs Smallest:
-  Average: Smallest 23-25 Smallest
-  Smallest's Best Game: 43-5
-  Smallest's Worst Game: 6-42
+Matchup 46, Bonus vs Randomized:
+  Average: Bonus 32-16 Randomized
+  Bonus's Best Game: 45-3
+  Bonus's Worst Game: 5-43
+
+Matchup 47, Bonus vs CloseFar:
+  Average: Bonus 27-21 CloseFar
+  Bonus's Best Game: 41-7
+  Bonus's Worst Game: 4-44
+
+Matchup 48, Bonus vs FarClose:
+  Average: Bonus 31-17 FarClose
+  Bonus's Best Game: 46-2
+  Bonus's Worst Game: 4-44
+
+Matchup 49, Bonus vs Biggest:
+  Average: Bonus 32-16 Biggest
+  Bonus's Best Game: 44-4
+  Bonus's Worst Game: 8-40
+
+Matchup 50, Bonus vs Smallest:
+  Average: Bonus 31-17 Smallest
+  Bonus's Best Game: 45-3
+  Bonus's Worst Game: 4-44
+
+Matchup 51, Bonus vs Bonus:
+  Average: Bonus 25-23 Bonus
+  Bonus's Best Game: 44-4
+  Bonus's Worst Game: 5-43
+
+Matchup 52, Bonus vs Capture:
+  Average: Bonus 29-19 Capture
+  Bonus's Best Game: 45-3
+  Bonus's Worst Game: 4-44
+
+Matchup 53, Bonus vs Spread:
+  Average: Bonus 31-17 Spread
+  Bonus's Best Game: 43-5
+  Bonus's Worst Game: 11-37
+
+Matchup 54, Bonus vs Hoard:
+  Average: Bonus 29-19 Hoard
+  Bonus's Best Game: 46-2
+  Bonus's Worst Game: 6-42
+
+Matchup 55, Capture vs Randomized:
+  Average: Capture 28-20 Randomized
+  Capture's Best Game: 45-3
+  Capture's Worst Game: 5-43
+
+Matchup 56, Capture vs CloseFar:
+  Average: Capture 20-28 CloseFar
+  Capture's Best Game: 40-8
+  Capture's Worst Game: 4-44
+
+Matchup 57, Capture vs FarClose:
+  Average: Capture 29-19 FarClose
+  Capture's Best Game: 45-3
+  Capture's Worst Game: 6-42
+
+Matchup 58, Capture vs Biggest:
+  Average: Capture 27-21 Biggest
+  Capture's Best Game: 44-4
+  Capture's Worst Game: 7-41
+
+Matchup 59, Capture vs Smallest:
+  Average: Capture 27-21 Smallest
+  Capture's Best Game: 46-2
+  Capture's Worst Game: 3-45
+
+Matchup 60, Capture vs Bonus:
+  Average: Capture 19-29 Bonus
+  Capture's Best Game: 42-6
+  Capture's Worst Game: 4-44
+
+Matchup 61, Capture vs Capture:
+  Average: Capture 24-24 Capture
+  Capture's Best Game: 45-3
+  Capture's Worst Game: 4-44
+
+Matchup 62, Capture vs Spread:
+  Average: Capture 25-23 Spread
+  Capture's Best Game: 42-6
+  Capture's Worst Game: 4-44
+
+Matchup 63, Capture vs Hoard:
+  Average: Capture 25-23 Hoard
+  Capture's Best Game: 45-3
+  Capture's Worst Game: 3-45
+
+Matchup 64, Spread vs Randomized:
+  Average: Spread 25-23 Randomized
+  Spread's Best Game: 42-6
+  Spread's Worst Game: 9-39
+
+Matchup 65, Spread vs CloseFar:
+  Average: Spread 21-27 CloseFar
+  Spread's Best Game: 33-15
+  Spread's Worst Game: 9-39
+
+Matchup 66, Spread vs FarClose:
+  Average: Spread 27-21 FarClose
+  Spread's Best Game: 35-13
+  Spread's Worst Game: 22-26
+
+Matchup 67, Spread vs Biggest:
+  Average: Spread 23-25 Biggest
+  Spread's Best Game: 33-15
+  Spread's Worst Game: 11-37
+
+Matchup 68, Spread vs Smallest:
+  Average: Spread 30-18 Smallest
+  Spread's Best Game: 42-6
+  Spread's Worst Game: 9-39
+
+Matchup 69, Spread vs Bonus:
+  Average: Spread 17-31 Bonus
+  Spread's Best Game: 37-11
+  Spread's Worst Game: 7-41
+
+Matchup 70, Spread vs Capture:
+  Average: Spread 23-25 Capture
+  Spread's Best Game: 41-7
+  Spread's Worst Game: 7-41
+
+Matchup 71, Spread vs Spread:
+  Average: Spread 23-25 Spread
+  Spread's Best Game: 33-15
+  Spread's Worst Game: 14-34
+
+Matchup 72, Spread vs Hoard:
+  Average: Spread 29-19 Hoard
+  Spread's Best Game: 43-5
+  Spread's Worst Game: 13-35
+
+Matchup 73, Hoard vs Randomized:
+  Average: Hoard 27-21 Randomized
+  Hoard's Best Game: 45-3
+  Hoard's Worst Game: 2-46
+
+Matchup 74, Hoard vs CloseFar:
+  Average: Hoard 17-31 CloseFar
+  Hoard's Best Game: 28-20
+  Hoard's Worst Game: 11-37
+
+Matchup 75, Hoard vs FarClose:
+  Average: Hoard 16-32 FarClose
+  Hoard's Best Game: 29-19
+  Hoard's Worst Game: 6-42
+
+Matchup 76, Hoard vs Biggest:
+  Average: Hoard 26-22 Biggest
+  Hoard's Best Game: 42-6
+  Hoard's Worst Game: 2-46
+
+Matchup 77, Hoard vs Smallest:
+  Average: Hoard 20-28 Smallest
+  Hoard's Best Game: 44-4
+  Hoard's Worst Game: 3-45
+
+Matchup 78, Hoard vs Bonus:
+  Average: Hoard 19-29 Bonus
+  Hoard's Best Game: 44-4
+  Hoard's Worst Game: 2-46
+
+Matchup 79, Hoard vs Capture:
+  Average: Hoard 24-24 Capture
+  Hoard's Best Game: 45-3
+  Hoard's Worst Game: 3-45
+
+Matchup 80, Hoard vs Spread:
+  Average: Hoard 19-29 Spread
+  Hoard's Best Game: 38-10
+  Hoard's Worst Game: 5-43
+
+Matchup 81, Hoard vs Hoard:
+  Average: Hoard 25-23 Hoard
+  Hoard's Best Game: 41-7
+  Hoard's Worst Game: 9-39
 

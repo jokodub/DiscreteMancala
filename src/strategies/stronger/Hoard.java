@@ -2,8 +2,8 @@
  * John Vezzola
  * for Dr. Arup Guha
  * 
- * Spread Strategy
- * Prefers to spread its pieces out, minimizing empty pits.
+ * Hoard Strategy
+ * Prefers to keep large clumps of pieces as long as it can
  */
 
 package strategies.stronger;
@@ -13,11 +13,11 @@ import java.util.Random;
 import strategies.Strategy;
 import structure.Board;
 
-public class Spread implements Strategy {
+public class Hoard implements Strategy {
 
     private Random rand;
 
-    public Spread(){
+    public Hoard(){
         rand = new Random();
     }
 
@@ -27,7 +27,7 @@ public class Spread implements Strategy {
         int[] moves = theBoard.getMoves(player);
 
         ArrayList<Integer> varPos = new ArrayList<>();
-        double lowestVar = Double.MAX_VALUE;
+        double biggestVar = Double.MIN_VALUE;
         double tempVar;
 
         //Simulate a move and compare the result's variance
@@ -36,14 +36,14 @@ public class Spread implements Strategy {
             copy.move(player, moves[i]);
             tempVar = variance(copy.getMySide(player));
 
-            if(tempVar > lowestVar)
+            if(tempVar < biggestVar)
                 continue;
-            else if(tempVar == lowestVar)
+            else if(tempVar == biggestVar)
                 varPos.add(moves[i]);
-            else{ //New smallest variance possible
+            else{ //New largest variance possible
                 varPos.clear();
                 varPos.add(moves[i]);
-                lowestVar = tempVar;
+                biggestVar = tempVar;
             }
 
         }
@@ -72,7 +72,7 @@ public class Spread implements Strategy {
     }
 
     public String toString(){
-        return "Spread";
+        return "Hoard";
     }
 
 }

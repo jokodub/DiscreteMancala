@@ -19,8 +19,8 @@ public class Manager {
     
     public static void main(String[] args) {
 
-        //Referee.play(new Board(), new Biggest(), new Biggest(), true, false); //Play single game
-        simulate(1000, 4, 6); //Sim every Strategy
+        Referee.play(new Board(), new Randomized(), new Hoard(), true, false); //Play single game
+        //simulate(10000, 4, 6); //Sim every Strategy
 
     }
 
@@ -40,7 +40,9 @@ public class Manager {
                                     new Biggest(),
                                     new Smallest(),
                                     new Bonus(),
-                                    new Capture()
+                                    new Capture(),
+                                    new Spread(),
+                                    new Hoard()
                                     };
 
         Board b = new Board(pieces, pits);

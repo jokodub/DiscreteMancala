@@ -28,9 +28,9 @@ public class Bonus implements Strategy {
         int[] moves = theBoard.getMoves(player);
         ArrayList<Integer> bonusPos = new ArrayList<>();
 
-        //If number of pieces matches the position number, results in bonus
+        //If number of pieces matches the position number (mod full loop around), results in bonus
         for(int i = 0; i < moves.length; i++){
-            if(moves[i] == theBoard.getPieces(player, moves[i]))
+            if(moves[i] == theBoard.getPieces(player, moves[i]) % (theBoard.getTotalPits()-1))
                 bonusPos.add(moves[i]);
         }
 
